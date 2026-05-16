@@ -53,3 +53,6 @@ desktop.ini
 # *.csv
 figure/imsave test1.png
 images/imsave test1.png
+
+# Claude Code
+.claude/
