@@ -1,0 +1,23 @@
+| 图形类别        | 主要函数（Py 生态）                                        | 关键参数速记                            | 适用数据与建模场景       | 备注                           |
+| ----------- | -------------------------------------------------- | --------------------------------- | --------------- | ---------------------------- |
+| **折线图**     | `plt.plot(x, y)`                                   | `marker`, `linewidth`, `label`    | 时间序列、灵敏度分析、趋势对比 | 最通用                          |
+| **散点图**     | `plt.scatter(x, y)`                                | `c`, `s`, `alpha`, `cmap`         | 相关性、聚类结果、空间分布   | 可加回归线                        |
+| **柱状图**     | `plt.bar(x, height)` / `sns.barplot`               | `color`, `width`, `edgecolor`     | 分类变量对比、方案优劣     | 横向用 `barh`                   |
+| **堆叠/分组柱**  | `plt.bar(..., bottom=)` / `sns.barplot(..., hue=)` | `bottom` / `hue`                  | 多指标并列对比         | 一图看多方案                       |
+| **直方图**     | `plt.hist(x)` / `sns.histplot`                     | `bins`, `density`, `kde`          | 连续变量分布检验        | 可与概率密度叠画                     |
+| **箱线图**     | `sns.boxplot(x, y)`                                | `notch`, `whis`                   | 分布离散程度、异常值检测    | 适合多组对比                       |
+| **饼图**      | `plt.pie(x)`                                       | `labels`, `autopct`, `startangle` | 占比、市场份额         | 类别 ≤ 6 为宜                    |
+| **热力图**     | `sns.heatmap(data)`                                | `annot`, `cmap`, `fmt`            | 相关性矩阵、灵敏度矩阵     | 颜色一眼看强弱                      |
+| **等高线图**    | `plt.contour(X, Y, Z)` / `plt.contourf`            | `levels`, `cmap`                  | 二元函数响应面、优化搜索    | 先 `np.meshgrid`              |
+| **三维曲面**    | `ax.plot_surface(X, Y, Z)`                         | `cmap`, `alpha`                   | 响应面、地形、利润曲面     | 需 `Axes3D`                   |
+| **火柴杆图**    | `plt.stem(x, y)`                                   | `linefmt`, `markerfmt`, `basefmt` | 离散脉冲、数字信号       |
+| **QQ/PP 图** | `stats.probplot`, `sm.qqplot`                      | `dist`, `plot`                    | 正态性/分布检验        | 统计建模必备                       |
+| **双 y 轴**   | `plt.twinx()` + 两次 `plot`                          | 共用 x 轴，不同 y 刻度                    | 指标量纲差异大         | Matlab 叫 `plotyy`            |
+| **雷达图**     | `plt.polar(theta, r)` / `mpl_toolkits.radviz`      | 角度、半径                             | 多维度综合评价         | 美观但易失真                       |
+| **箱线 + 散点** | `sns.boxenplot` + `stripplot`                      | 两者叠加                              | 展示分布+原始点        | 论文高级感                        |
+| **时间序列分解图** | `statsmodels.tsa.seasonal_decompose`               | `model`, `period`                 | 季节/趋势/残差        | 电力、销量预测常用                    |
+折线 + 置信带：sns.lineplot(x, y, ci=95) 一条命令出带透明带的线。
+多子图：fig, axes = plt.subplots(2, 2, figsize=(10, 8)) 排版整洁。
+LaTeX 公式：plt.rc('text', usetex=True) 后可直接 $ \alpha $，论文更美观。
+导出高清：plt.savefig('fig.png', dpi=600, bbox_inches='tight') 投稿不糊图。
+按上表“对号入座”即可覆盖 95 % 的数学建模可视化需求。
