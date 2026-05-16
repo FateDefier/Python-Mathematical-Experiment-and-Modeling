@@ -51,3 +51,5 @@ desktop.ini
 # Large data files (optional)
 # *.xlsx
 # *.csv
+figure/imsave test1.png
+images/imsave test1.png
